@@ -1,0 +1,32 @@
+nginx:
+  replicaCount: 1
+  image:
+    repository: nginx
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 80
+
+postgres:
+  image:
+    repository: postgres
+    tag: latest
+  postgresDB:
+    username: user
+    password: password
+    dbName: mydatabase
+  service:
+    type: ClusterIP
+    port: 5432
+
+redis:
+  image:
+    repository: redis
+    tag: latest
+  redisConfig:
+    maxmemory: "2gb"
+    maxclients: 1000
+  service:
+    type: ClusterIP
+    port: 6379
